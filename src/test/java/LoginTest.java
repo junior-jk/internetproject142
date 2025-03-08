@@ -24,7 +24,7 @@ public class LoginTest {
         driver.manage().window().maximize(); // maximiza a janela do browser
     }
 
-    @Test
+    @Test  
     public void testLoginComSucesso() {
         driver.get("https://the-internet.herokuapp.com/login");
 
@@ -42,12 +42,12 @@ public class LoginTest {
        
     }
 
+    
     // Após os testes, feche o navegador
     @AfterEach
     public void tearDown() {
         driver.quit();
     }
-
 
     @Test
     public void testLoginUsuarioIncorretoSenhaCorreta() {
@@ -64,7 +64,6 @@ public class LoginTest {
         assertTrue(errorMessage.isDisplayed());
     }
 
-
     @Test
     public void testLoginUsuarioCorretoSenhaIncorreta() {
         driver.get("https://the-internet.herokuapp.com/login");
@@ -80,7 +79,6 @@ public class LoginTest {
         assertTrue(errorMessage.isDisplayed());
     }
 
-
     @Test
     public void testLoginComCamposEmBranco() {
         driver.get("https://the-internet.herokuapp.com/login");       
@@ -90,7 +88,6 @@ public class LoginTest {
         WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your username is invalid!')]"));
         assertTrue(errorMessage.isDisplayed());
     }
-
 
     @Test
     public void testLoginCampoUsuarioEmBranco() {
@@ -107,7 +104,6 @@ public class LoginTest {
         assertTrue(errorMessage.isDisplayed());
     }
 
-
     @Test
     public void testLoginCampoSenhaEmBranco() {
         driver.get("https://the-internet.herokuapp.com/login");
@@ -123,7 +119,6 @@ public class LoginTest {
         assertTrue(errorMessage.isDisplayed());
     }
 
-
     @Test
     public void testLoginComCamposLongos() {
         driver.get("https://the-internet.herokuapp.com/login");
@@ -138,7 +133,6 @@ public class LoginTest {
         WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your username is invalid!')]"));
         assertTrue(errorMessage.isDisplayed());
     }
-
 
     @Test
     public void testLoginSenhaIncorretaFormato() {
