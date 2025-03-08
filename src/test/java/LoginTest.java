@@ -39,10 +39,7 @@ public class LoginTest {
         
         WebElement secureArea = driver.findElement(By.xpath("//*[contains(text(), 'Your password is invalid!')]"));
         assertTrue(secureArea.isDisplayed());
-
-
-
-        
+       
     }
 
     // Após os testes, feche o navegador
@@ -51,6 +48,7 @@ public class LoginTest {
         driver.quit();
     }
 
+
     @Test
     public void testLoginUsuarioIncorretoSenhaCorreta() {
         driver.get("https://the-internet.herokuapp.com/login");
@@ -58,13 +56,14 @@ public class LoginTest {
         WebElement passwordField = driver.findElement(By.id("password"));
         WebElement loginButton = driver.findElement(By.cssSelector("#login > button"));
 
-        usernameField.sendKeys("juca");
+        usernameField.sendKeys("usuarioIncorreto");
         passwordField.sendKeys("SuperSecretPassword");
         loginButton.click();
 
-        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), ' Your username is invalid!')]"));
+        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your username is invalid!')]"));
         assertTrue(errorMessage.isDisplayed());
     }
+
 
     @Test
     public void testLoginUsuarioCorretoSenhaIncorreta() {
@@ -81,6 +80,7 @@ public class LoginTest {
         assertTrue(errorMessage.isDisplayed());
     }
 
+
     @Test
     public void testLoginComCamposEmBranco() {
         driver.get("https://the-internet.herokuapp.com/login");
@@ -92,9 +92,10 @@ public class LoginTest {
         passwordField.sendKeys("");
         loginButton.click();
 
-        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), ' Your username is invalid!')]"));
+        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your username is invalid!')]"));
         assertTrue(errorMessage.isDisplayed());
     }
+
 
     @Test
     public void testLoginCampoUsuarioEmBranco() {
@@ -111,20 +112,22 @@ public class LoginTest {
         assertTrue(errorMessage.isDisplayed());
     }
 
+
     @Test
     public void testLoginCampoSenhaEmBranco() {
         driver.get("https://the-internet.herokuapp.com/login");
-        WebElement usernameField = driver.findElement(By.id("username"));
-        WebElement passwordField = driver.findElement(By.id("password"));
+        // WebElement usernameField = driver.findElement(By.id("username"));
+        // WebElement passwordField = driver.findElement(By.id("password"));
         WebElement loginButton = driver.findElement(By.cssSelector("#login > button"));
 
-        usernameField.sendKeys("tomsmith ");
-        passwordField.sendKeys("");
+        // usernameField.sendKeys("tomsmith");
+        // passwordField.sendKeys("");
         loginButton.click();
 
-        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), ' Your username is invalid!')]"));
+        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your username is invalid!')]"));
         assertTrue(errorMessage.isDisplayed());
     }
+
 
     @Test
     public void testLoginComCamposLongos() {
@@ -137,9 +140,10 @@ public class LoginTest {
         passwordField.sendKeys("senhaMuitoLongaQueDeveFalhar1234567890");
         loginButton.click();
 
-        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), ' Your username is invalid!')]"));
+        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your username is invalid!')]"));
         assertTrue(errorMessage.isDisplayed());
     }
+
 
     @Test
     public void testLoginSenhaIncorretaFormato() {
@@ -148,12 +152,11 @@ public class LoginTest {
         WebElement passwordField = driver.findElement(By.id("password"));
         WebElement loginButton = driver.findElement(By.cssSelector("#login > button"));
 
-        usernameField.sendKeys("usuarioValido");
+        usernameField.sendKeys("tomsmith");
         passwordField.sendKeys("senha@invalida!");
         loginButton.click();
 
-        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), ' Your username is invalid!')]"));
+        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your password is invalid!')]"));
         assertTrue(errorMessage.isDisplayed());
     }
-
 }
