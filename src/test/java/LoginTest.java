@@ -42,11 +42,11 @@ public class LoginTest {
        
     }
 
-    // Após os testes, feche o navegador
-    @AfterEach
-    public void tearDown() {
-        driver.quit();
-    }
+    // // Após os testes, feche o navegador
+    // @AfterEach
+    // public void tearDown() {
+    //     driver.quit();
+    // }
 
 
     @Test
@@ -84,12 +84,12 @@ public class LoginTest {
     @Test
     public void testLoginComCamposEmBranco() {
         driver.get("https://the-internet.herokuapp.com/login");
-        WebElement usernameField = driver.findElement(By.id("username"));
-        WebElement passwordField = driver.findElement(By.id("password"));
+        // WebElement usernameField = driver.findElement(By.id("username"));
+        // WebElement passwordField = driver.findElement(By.id("password"));
         WebElement loginButton = driver.findElement(By.cssSelector("#login > button"));
 
-        usernameField.sendKeys("");
-        passwordField.sendKeys("");
+        // usernameField.sendKeys("");
+        // passwordField.sendKeys("");
         loginButton.click();
 
         WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your username is invalid!')]"));
@@ -105,7 +105,7 @@ public class LoginTest {
         WebElement loginButton = driver.findElement(By.cssSelector("#login > button"));
 
         usernameField.sendKeys("");
-        passwordField.sendKeys("senhaValida");
+        passwordField.sendKeys("SuperSecretPassword");
         loginButton.click();
 
         WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your username is invalid!')]"));
@@ -116,15 +116,15 @@ public class LoginTest {
     @Test
     public void testLoginCampoSenhaEmBranco() {
         driver.get("https://the-internet.herokuapp.com/login");
-        // WebElement usernameField = driver.findElement(By.id("username"));
-        // WebElement passwordField = driver.findElement(By.id("password"));
+        WebElement usernameField = driver.findElement(By.id("username"));
+        WebElement passwordField = driver.findElement(By.id("password"));
         WebElement loginButton = driver.findElement(By.cssSelector("#login > button"));
 
-        // usernameField.sendKeys("tomsmith");
-        // passwordField.sendKeys("");
+        usernameField.sendKeys("tomsmith");
+        passwordField.sendKeys("");
         loginButton.click();
 
-        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your username is invalid!')]"));
+        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), 'Your password is invalid!')]"));
         assertTrue(errorMessage.isDisplayed());
     }
 
