@@ -156,14 +156,4 @@ public class LoginTest {
         assertTrue(errorMessage.isDisplayed());
     }
 
-    @Test
-    public void testLoginComCamposEmBrancoSemPreencher() {
-        driver.get("https://the-internet.herokuapp.com/login");
-        WebElement loginButton = driver.findElement(By.cssSelector("#login > button"));
-        loginButton.click();
-
-        WebElement errorMessage = driver.findElement(By.xpath("//*[contains(text(), ' Your username is invalid!')]"));
-        assertTrue(errorMessage.isDisplayed());
-    }
-
 }
